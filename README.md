@@ -1,4 +1,4 @@
-# Evidence4 - Task APP
+# Evidence 4 - Task APP
 
 ## Description
 This project tackles the problem of managing organization of tasks through a little Task application. It has been designed using the functional programming paradigm, prioritizing pure functions. The goal of the application is to allow users to create, manage, sort, and filter tasks based on attributes such as status, priority, and deadline, providing a practical tool for personal organization.
@@ -23,3 +23,40 @@ Data flow:
 * **First-class functions** allow operation logic to be passed as arguments.
 * **Referential transparency** guarantees that functions always return the same output, simplifying testing and debugging.
 
+## Implementation
+The program was implemented in C++, a language that is useful for value semantics, higher-order functions, and algorithmic programming.
+
+All functions return new vectors rather than altering the existing ones. For example:
+* `addTask` appends a task and returns a new task list.
+* `toggleTaskStatus` creates a new list with the updated task.
+* `filterByStatus`, `sortByPriority`, and `sortByDeadline` all return new filtered or sorted vectors.
+
+The code is modular, maintainable, and easily extensible, supporting future features like undo, persistence, or categories.
+
+## Test 
+Testing is part of the file ```test_task.cpp ```, which has some made tasks, and the user has the possibility to make their own, to test all the functions implemented.
+
+* **Unit tests** for core operations: add, toggle, filter, sort.
+* **Edge case tests**: e.g., toggling non-existent IDs, sorting an empty list.
+* **Integration tests**: sequences of operations to simulate real use.
+
+The output of each step is printed in a consistent format, allowing manual verification.  All expected results match actual output, demonstrating correctness. Since the state is not shared or mutated, tests are deterministic.
+
+## Analysis
+### Time Complexity:
+* `addTask`: O(1) - (vector push\_back). It copies the entire tasks vector, which takes O(n) time, where n is the number of tasks.
+* `toggleTaskStatus`: O(n). iteration through all tasks to find the one with the matching ID.
+* `filterByStatus`: O(n). Loop through all tasks to check their completed status and build a new vector of matches.
+* `sortByPriority` / `sortByDeadline`: O(n log n). Both functions copy the tasks vector, which takes O(n), and then use std::sort, which runs in O(n log n) on average
+
+### Space Complexity
+ O(n). Each function creates a new vector. Space usage is linear relative to the number of tasks. 
+
+* **Object-Oriented**: Would encapsulate tasks and lists as classes with methods; simpler for maintaining shared mutable state but harder to track changes.
+
+
+## References
+- Bird, R., & Wadler, P. (1988). Introduction to functional programming. Prentice Hall. https://www.worldcat.org/title/17480008
+- IEEE Standards Board. (1990). IEEE standard glossary of software engineering terminology (IEEE Std 610.12-1990). Institute of Electrical and Electronics Engineers. https://doi.org/10.1109/IEEESTD.1990.101064
+- International Organization for Standardization. (2020). ISO/IEC 14882:2020 – Programming languages – C++. ISO. https://www.iso.org/standard/79358.html
+- Sedgewick, R., & Wayne, K. (2011). Algorithms (4th ed.). Addison-Wesley. https://algs4.cs.princeton.edu/home/
