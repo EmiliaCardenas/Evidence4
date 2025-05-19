@@ -52,7 +52,7 @@ The output of each step is printed in a consistent format, allowing manual verif
 ### Space Complexity
  O(n). Each function creates a new vector. Space usage is linear relative to the number of tasks. 
 
-* **Object-Oriented**: Would encapsulate tasks and lists as classes with methods; simpler for maintaining shared mutable state but harder to track changes.
+**Object-Oriented**: Would encapsulate tasks and lists as classes with methods; simpler for maintaining shared mutable state but harder to track changes.
 
 
 ## References
