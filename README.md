@@ -1,5 +1,9 @@
 # Evidence 4 - Task APP
 
+## Corrections
+- Adding a proper diagram
+- Adding a second paradigm and its time complexity
+
 ## Description
 This project tackles the problem of managing the organization of tasks through a small Task application. It has been designed using the functional programming paradigm, prioritizing pure functions. The goal of the application is to allow users to create, manage, sort, and filter tasks based on attributes such as status, priority, and deadline, providing a practical tool for personal organization.
 
