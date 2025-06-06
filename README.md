@@ -85,6 +85,8 @@ Scripting:
 
 This scripting version shows how simple, mutable-state programs can efficiently dynamically manage tasks. 
 While the functional version emphasizes predictability and immutability, the scripting version prioritizes direct control and ease of interaction.
+I think I chose better the functional for its easy debut and more straightforward functions; this is a very simple but easy to understand app for other kinds of functions; it would be needed to take actions from other paradigms
+or to adapt it to the functional one. Like the new function with regex, it can be a huge if with recursion until getting the description needed.
 
 ## References
 - Bird, R., & Wadler, P. (1988). Introduction to functional programming. Prentice Hall. https://www.worldcat.org/title/17480008
