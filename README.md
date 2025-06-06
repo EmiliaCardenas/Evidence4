@@ -1,7 +1,7 @@
 # Evidence 4 - Task APP
 
 ## Description
-This project tackles the problem of managing organization of tasks through a little Task application. It has been designed using the functional programming paradigm, prioritizing pure functions. The goal of the application is to allow users to create, manage, sort, and filter tasks based on attributes such as status, priority, and deadline, providing a practical tool for personal organization.
+This project tackles the problem of managing the organization of tasks through a small Task application. It has been designed using the functional programming paradigm, prioritizing pure functions. The goal of the application is to allow users to create, manage, sort, and filter tasks based on attributes such as status, priority, and deadline, providing a practical tool for personal organization.
 
 The motivation behind the project is that sometimes people forget which tasks have been completed, which ones are soon to be completed. There are already some apps that do this kind of organizatión, but this is the main base of how they work.  This project demonstrates how functional principles can support the base of these managers in maintainable code.
 
@@ -15,9 +15,7 @@ The architecture follows a functional approach. Tasks are treated as immutable d
 * **Output Layer**: Displays the list of tasks in a formatted way, reflecting the requested operation.
 
 Data flow:
-```
-[User Input] --> [Functional Logic (Add/Toggle/Filter)] --> [New Task List] --> [Display Output]
-```
+![UML](UML.png)
 
 * **Immutability** ensures that all state transitions are predictable and testable.
 * **First-class functions** allow operation logic to be passed as arguments.
@@ -54,6 +52,35 @@ The output of each step is printed in a consistent format, allowing manual verif
 
 **Object-Oriented**: Would encapsulate tasks and lists as classes with methods; simpler for maintaining shared mutable state but harder to track changes.
 
+## Other Solution
+To use another Paradigm, I ended up using Scripting, taking into consideration an implementation using regex in Python. using the same type of functions as in the Functional Paradigm, having a very
+similar structure to C++. But to have a difference, there is a new function to be implemented to `filter_by_description_regex`
+These functions will help to match descriptions to the ones we want to search, adding another kind of filter to the task app. And printing the ones that fully match what we search as the user for the description.
+
+```
+import re
+
+def filter_by_description_regex(pattern):
+    regex = re.compile(pattern, re.IGNORECASE)
+    return [task for task in tasks if regex.search(task["description"])]
+```
+
+This specific function will result in a time complexity of O(n*m), as a result of having two loops, the task (n) and the descriptions (m).
+The rest of the functions will maintain their time complexity.
+
+## Differences: Functional vs Scripting
+Functional:
+-  Immutable
+-  Stateless functions
+-  Deterministic 
+
+Scripting:
+-  Muteable
+-  Global state functions
+-  Simple state, less deterministic
+
+This scripting version shows how simple, mutable-state programs can efficiently dynamically manage tasks. 
+While the functional version emphasizes predictability and immutability, the scripting version prioritizes direct control and ease of interaction.
 
 ## References
 - Bird, R., & Wadler, P. (1988). Introduction to functional programming. Prentice Hall. https://www.worldcat.org/title/17480008
